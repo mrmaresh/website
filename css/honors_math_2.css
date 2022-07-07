@@ -97,5 +97,9 @@
 
 .overlay-fade-out:hover .overlay-info span{
         color: black;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
+
+.u4 img {
+    background-image: url('https://images.unsplash.com/photo-1490737367009-922d4a612469?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTJ8fGdlb21ldHJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60');
+}
