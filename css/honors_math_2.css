@@ -148,3 +148,15 @@
 .u8 span span span {
     background-color: rgba(80,80,80, .1);
 }
+
+.u9 span span span {
+    background-color: rgba(107,142,35, .1);
+}
+
+.u12 span span span {
+    background-color: rgba(139,69,19, .1);
+}
+
+.u13 span span span {
+    background-color: rgba(255,68,0, .1);
+}
