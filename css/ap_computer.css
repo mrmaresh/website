@@ -74,94 +74,9 @@ video {
 }
 
 
-.section-block.grid-filter-menu, .section-block.grid-container {
-    background-color: #36454F;
-}
-
-.grid-filter-menu a{
-	padding: 0.5rem 0;
-	font-size: 1rem;
-	font-weight: 400;
-	color: rgb(255,255,255);
-	display: block;
-	position: relative;
-	border-bottom: 1px solid transparent;
-}
-.grid-filter-menu a:hover{
-	color: rgb(79, 198, 194);
-}
-.grid-filter-menu a.active{
-	color: rgb(79, 198, 194);
-	border-color: rgb(79, 198, 194);
-}
-
-.overlay-fade-out .overlay-info{
-    opacity: 1}
-
-.overlay-fade-out:hover .overlay-info{
-    opacity: .6}
-
-.overlay-fade-out .overlay-info span{
-        color: rgb(140,140,140);
-        transition: 1s;
+@media(max-width: 580px) {
+    .title-text{
+        left: 0;
+        width: 100%;
     }
-
-.overlay-fade-out:hover .overlay-info span{
-        color: black;
-        font-size: 1.35rem;
-    }
-
-
-.u1 span span span {
-    background-color: rgba(0, 255, 255, .1);
-}
-
-.u2 span span span {
-    background-color: rgba(255, 255, 0, .1);
-}
-
-.u3 span span span {
-    background-color: rgba(255, 0, 255, .1);
-}
-
-.u4 span span span {
-        background-color: rgba(0, 255, 0, .1);
-}
-
-.u5 span span span {
-    background-color: rgba(255, 0, 0, .1);
-}
-
-.u6 span span span {
-    background-color: rgba(0, 0, 255, .1);
-}
-
-.u7a span span span {
-    background-color: rgba(244,164,96, .1);
-}
-
-.u7b span span span {
-    background-color: rgba(95,158,160, .1);
-}
-
-
-
-.u7c span span span {
-    background-color: rgba(75,0,130, .1);
-}
-
-.u8 span span span {
-    background-color: rgba(80,80,80, .1);
-}
-
-.u9 span span span {
-    background-color: rgba(107,142,35, .1);
-}
-
-.u12 span span span {
-    background-color: rgba(139,69,19, .1);
-}
-
-.u13 span span span {
-    background-color: rgba(255,68,0, .1);
 }
