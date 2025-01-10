@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>webInstructions.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="website-set-up-instructions">Website Set-Up Instructions</h1>
+<h2 id="ssh-setup">SSH Setup</h2>
+<ol>
+<li>
+<p><strong>Open Terminal:</strong></p>
+<ul>
+<li>Launch Visual Studio Code.</li>
+<li>Open a terminal window and navigate to your <code>workspaces</code> directory.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generate SSH Key:</strong></p>
+<ul>
+<li>Execute the following command:<pre class="hljs"><code><div>ssh-keygen
+</div></code></pre>
+</li>
+<li>When prompted to “save the key,” press <strong>Enter</strong> without typing anything.</li>
+<li>Input a <strong>passphrase</strong> (password) that you’ll remember, then press <strong>Enter</strong>. Re-enter the passphrase when prompted. (Note: You won’t see what you type for security reasons.)</li>
+<li>A &quot;randomart image&quot; will be displayed; you can ignore it.</li>
+</ul>
+</li>
+<li>
+<p><strong>Copy Public Key:</strong></p>
+<ul>
+<li>Execute the following command:<pre class="hljs"><code><div>cat ~/.ssh/id_rsa.pub
+</div></code></pre>
+</li>
+<li>Highlight and copy the entire public key (starting with <code>ssh-rsa</code> and ending at the last character). Use <strong>Ctrl + Shift + C</strong> to copy.</li>
+</ul>
+</li>
+<li>
+<p><strong>Add SSH Key to GitHub:</strong></p>
+<ul>
+<li>Visit <a href="https://github.com/settings/keys">GitHub SSH Keys</a> and log in using your GitHub username and password.</li>
+<li>Click <strong>New SSH Key</strong>.</li>
+<li>Paste your public key into the &quot;Key&quot; text box.</li>
+<li>Optionally, add a title (e.g., <code>CS50</code>) in the &quot;Title&quot; field.</li>
+<li>Click <strong>Add SSH Key</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Test SSH Connection:</strong></p>
+<ul>
+<li>Execute the following command:<pre class="hljs"><code><div>ssh -T git@ssh.github.com -p 443
+</div></code></pre>
+</li>
+<li>If prompted with the message:<pre class="hljs"><code><div>The authenticity of host '[ssh.github.com]:443 ([140.82.113.35]:443)' can't be established.
+ED25519 key fingerprint is SHA256:7KMZvJiITZ+HbOyqjKJV2AeC5As3GSZES5abcd1NIe4.
+This key is not known by any other names. Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</div></code></pre>
+<ul>
+<li>Type <strong>yes</strong> and press <strong>Enter</strong>.</li>
+</ul>
+</li>
+<li>When prompted to enter your passphrase:<pre class="hljs"><code><div>Enter passphrase for key 'home/ubuntu/.ssh/id_rsa':
+</div></code></pre>
+<ul>
+<li>Input your passphrase and press <strong>Enter</strong>.</li>
+</ul>
+</li>
+<li>You should see:<pre class="hljs"><code><div>Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+</div></code></pre>
+<ul>
+<li>If not, review the steps above to ensure nothing was missed.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="github-repository-setup">GitHub Repository Setup</h2>
+<ol>
+<li>
+<p><strong>Create Repository:</strong></p>
+<ul>
+<li>Go to <a href="https://github.com">GitHub</a> and log in if necessary.</li>
+<li>Click the <strong>New</strong> button on the top-left of the screen.</li>
+<li>Input a repository name. This will become part of your website’s URL.</li>
+<li>Select <strong>Public</strong>, then click <strong>Create Repository</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Initialize Git in Website Directory:</strong></p>
+<ul>
+<li>In the terminal, navigate to your website directory:<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> website
+</div></code></pre>
+</li>
+<li>Initialize a Git repository:<pre class="hljs"><code><div>git init
+</div></code></pre>
+</li>
+<li>Add all files to the repository:<pre class="hljs"><code><div>git add .
+</div></code></pre>
+</li>
+<li>Commit your changes with a message:<pre class="hljs"><code><div>git commit -m <span class="hljs-string">"Initial commit"</span>
+</div></code></pre>
+</li>
+<li>Link your repository to GitHub:<pre class="hljs"><code><div>git remote add origin git@github.com:USERNAME/REPONAME.git
+</div></code></pre>
+<ul>
+<li>Replace <code>USERNAME</code> and <code>REPONAME</code> with your GitHub username and repository name.</li>
+</ul>
+</li>
+<li>Push your changes to GitHub:<pre class="hljs"><code><div>git push --<span class="hljs-built_in">set</span>-upstream origin main
+</div></code></pre>
+</li>
+<li>Enter your passphrase when prompted and press <strong>Enter</strong>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="start-your-website">Start Your Website</h2>
+<ol>
+<li><strong>Enable GitHub Pages:</strong>
+<ul>
+<li>In your GitHub repository, go to <strong>Settings</strong> &gt; <strong>Pages</strong> (URL: <code>https://github.com/USERNAME/REPONAME/settings/pages</code>).</li>
+<li>Under &quot;Branch,&quot; select <strong>Main</strong> and click <strong>Save</strong>.</li>
+<li>Wait a few minutes, then refresh the page. A message will appear at the top:<pre class="hljs"><code><div>Your site is live at https://USERNAME.github.io/REPONAME/
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="updating-your-website">Updating Your Website</h2>
+<ol>
+<li>
+<p><strong>Make Changes and Update GitHub:</strong></p>
+<ul>
+<li>After editing your website’s code (HTML, CSS, JS), navigate to your website directory in the terminal:<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> website
+</div></code></pre>
+</li>
+<li>Stage all changes:<pre class="hljs"><code><div>git add .
+</div></code></pre>
+</li>
+<li>Commit your changes with a message:<pre class="hljs"><code><div>git commit -m <span class="hljs-string">"Updated website"</span>
+</div></code></pre>
+</li>
+<li>Push the changes to GitHub:<pre class="hljs"><code><div>git push
+</div></code></pre>
+</li>
+<li>Enter your passphrase and press <strong>Enter</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Updates:</strong></p>
+<ul>
+<li>Wait a few minutes, then visit your website to see the changes reflected.</li>
+</ul>
+</li>
+</ol>
+
+</body>
+</html>
